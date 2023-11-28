@@ -8,8 +8,9 @@ import {
   Avatar,
   Button,
   Stack,
-  Divider,
+  ListSubheader,
   Autocomplete,
+  Select,
 } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -91,21 +92,32 @@ const divs = [
   },
 ];
 
-// ระดับความเสี่ยง
-const riskLavel = [
-  { level: 'A', type: 'Clinic' },
-  { level: 'B', type: 'Clinic' },
-  { level: 'C', type: 'Clinic' },
-  { level: 'D', type: 'Clinic' },
-  { level: 'E', type: 'Clinic' },
-  { level: 'F', type: 'Clinic' },
-  { level: 'G', type: 'Clinic' },
-  { level: 'H', type: 'Clinic' },
-  { level: 'I', type: 'Clinic' },
-  { level: '1', type: 'Non-Clinic' },
-  { level: '2', type: 'Non-Clinic' },
-  { level: '3', type: 'Non-Clinic' },
-  { level: '4', type: 'Non-Clinic' },
+// คณะกรรมการที่เกี่ยวข้อง
+const committees = [
+  {
+    value: 'IC',
+    label: 'IC',
+  },
+  {
+    value: 'RM',
+    label: 'RM',
+  },
+  {
+    value: 'ENV',
+    label: 'ENV',
+  },
+  {
+    value: 'PTC',
+    label: 'PTC',
+  },
+];
+
+// เครื่องมือเครื่องใช้
+const risktools = [
+  {
+    value: 'RCA',
+    label: 'RCA',
+  },
 ];
 
 const ConsiderRiskForm = () => {
@@ -113,6 +125,8 @@ const ConsiderRiskForm = () => {
   const [risktype, setRiskType] = React.useState('');
   const [witness, setWitness] = React.useState('');
   const [div, setDiv] = React.useState('');
+  const [level, setLevel] = React.useState('');
+  const [committee, setCommittee] = React.useState('');
 
   const handleChangeRiskType = (event) => {
     setRiskType(event.target.value);
@@ -127,9 +141,13 @@ const ConsiderRiskForm = () => {
     setDiv(event.target.value);
   };
 
-  // const options = riskLavel.map((option) => {
-  //   const
-  // })
+  const handleChangeLevel = (event) => {
+    setLevel(event.target.value);
+  };
+
+  const handleChangeCommittee = (event) => {
+    setCommittee(event.target.value);
+  };
 
   return (
     <Grid container spacing={3}>
@@ -430,61 +448,68 @@ const ConsiderRiskForm = () => {
                   fullWidth
                   id="text-risklevel"
                   variant="outlined"
-                  value={risktype}
-                  onChange={handleChangeRiskType}
+                  value={level}
+                  onChange={handleChangeLevel}
                 >
-                  {risktypes.map((option) => (
+                  {/* {risktypes.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.label}
                     </MenuItem>
-                  ))}
+                  ))} */}
+                  <ListSubheader>Clinic</ListSubheader>
+                  <MenuItem value={1}>A</MenuItem>
+                  <MenuItem value={2}>B</MenuItem>
+                  <MenuItem value={3}>C</MenuItem>
+                  <MenuItem value={4}>D</MenuItem>
+                  <MenuItem value={5}>E</MenuItem>
+                  <MenuItem value={6}>F</MenuItem>
+                  <MenuItem value={7}>G</MenuItem>
+                  <MenuItem value={8}>H</MenuItem>
+                  <MenuItem value={9}>I</MenuItem>
+                  <ListSubheader>Non-clinic</ListSubheader>
+                  <MenuItem value={10}>1</MenuItem>
+                  <MenuItem value={11}>2</MenuItem>
+                  <MenuItem value={12}>3</MenuItem>
+                  <MenuItem value={13}>4</MenuItem>
                 </CustomSelect>
               </Grid>
-              <Grid item xs={12} sm={5}>
+              <Grid item xs={12} sm={6}>
                 <CustomFormLabel
                   sx={{
                     mt: 0,
                   }}
-                  htmlFor="text-risktype"
+                  htmlFor="text-divs"
                 >
-                  คณะกรรมการที่เกี่ยวข้อง
+                  คณะกรรมการที่เกี่ยวข้อง (ระบุได้มากกว่า 1)
                 </CustomFormLabel>
-                <CustomSelect
+                <Autocomplete
+                  multiple
                   fullWidth
-                  id="text-risktype"
-                  variant="outlined"
-                  value={risktype}
-                  onChange={handleChangeRiskType}
-                >
-                  {risktypes.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </CustomSelect>
+                  id="tags-outlined"
+                  options={committees}
+                  getOptionLabel={(option) => option.label}
+                  filterSelectedOptions
+                  renderInput={(params) => <CustomTextField {...params} />}
+                />
               </Grid>
-              <Grid item xs={12} sm={5}>
+              <Grid item xs={12} sm={4}>
                 <CustomFormLabel
                   sx={{
                     mt: 0,
                   }}
-                  htmlFor="text-risktype"
+                  htmlFor="text-divs"
                 >
-                  เครื่องมือเครื่องใช้
+                  เครื่องมือเครื่องใช้ (ระบุได้มากกว่า 1)
                 </CustomFormLabel>
-                <CustomSelect
+                <Autocomplete
+                  multiple
                   fullWidth
-                  id="text-risktype"
-                  variant="outlined"
-                  value={risktype}
-                  onChange={handleChangeRiskType}
-                >
-                  {risktypes.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </CustomSelect>
+                  id="tags-outlined"
+                  options={risktools}
+                  getOptionLabel={(option) => option.label}
+                  filterSelectedOptions
+                  renderInput={(params) => <CustomTextField {...params} />}
+                />
               </Grid>
               <Grid item xs={12} sm={12}>
                 <CustomFormLabel
@@ -508,23 +533,19 @@ const ConsiderRiskForm = () => {
                   sx={{
                     mt: 0,
                   }}
-                  htmlFor="text-risktype"
+                  htmlFor="text-divs"
                 >
-                  หน่วยงานที่ต้องทบทวน
+                  หน่วยงานที่ต้องทบทวน (ระบุได้มากกว่า 1 หน่วยงาน)
                 </CustomFormLabel>
-                <CustomSelect
+                <Autocomplete
+                  multiple
                   fullWidth
-                  id="text-risktype"
-                  variant="outlined"
-                  value={risktype}
-                  onChange={handleChangeRiskType}
-                >
-                  {risktypes.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </CustomSelect>
+                  id="tags-outlined"
+                  options={divs}
+                  getOptionLabel={(option) => option.label}
+                  filterSelectedOptions
+                  renderInput={(params) => <CustomTextField {...params} />}
+                />
               </Grid>
             </Grid>
             <Stack direction="row" spacing={2} sx={{ justifyContent: 'end' }} mt={3}>

@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 import Header from './vertical/header/Header';
 import HorizontalHeader from '../full/horizontal/header/Header';
 import Sidebar from './vertical/sidebar/Sidebar';
-import Customizer from './shared/customizer/Customizer';
+// import Customizer from './shared/customizer/Customizer';
 import Navigation from './horizontal/navbar/Navbar';
 
 const MainWrapper = styled('div')(() => ({
@@ -71,7 +71,7 @@ const FullLayout = () => {
           {/* End Page */}
           {/* ------------------------------------------- */}
         </Container>
-        <Customizer />
+        {/* <Customizer /> */}
       </PageWrapper>
     </MainWrapper>
   );

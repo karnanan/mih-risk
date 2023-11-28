@@ -7,7 +7,6 @@ import { IconMail } from '@tabler/icons';
 import { Stack } from '@mui/system';
 
 import ProfileImg from 'src/assets/images/profile/user-1.jpg';
-import unlimitedImg from 'src/assets/images/backgrounds/unlimited-bg.png';
 import Scrollbar from 'src/components/custom-scroll/Scrollbar';
 
 const Profile = () => {
@@ -67,10 +66,10 @@ const Profile = () => {
               <Avatar src={ProfileImg} alt={ProfileImg} sx={{ width: 95, height: 95 }} />
               <Box>
                 <Typography variant="subtitle2" color="textPrimary" fontWeight={600}>
-                  Mathew Anderson
+                  Karnanan Purimanuruk
                 </Typography>
                 <Typography variant="subtitle2" color="textSecondary">
-                  Designer
+                  IT Support
                 </Typography>
                 <Typography
                   variant="subtitle2"
@@ -80,7 +79,7 @@ const Profile = () => {
                   gap={1}
                 >
                   <IconMail width={15} height={15} />
-                  info@modernize.com
+                  it@mukinter.com
                 </Typography>
               </Box>
             </Stack>

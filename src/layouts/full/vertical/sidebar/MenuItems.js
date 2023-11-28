@@ -41,6 +41,7 @@ const Menuitems = [
     chip: '2',
     chipColor: 'error',
   },
+  // Menu ด้านล่างเห็นเฉพาะคณะกรรมการความเสี่ยง
   {
     id: uniqueId(),
     title: 'รายการความเสี่ยง',
