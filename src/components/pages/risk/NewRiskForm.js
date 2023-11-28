@@ -4,8 +4,6 @@ import {
   Grid,
   Typography,
   MenuItem,
-  Box,
-  Avatar,
   Button,
   Stack,
   Divider,
@@ -105,9 +103,6 @@ const NewRiskForm = () => {
   };
   const handleChangeWitness = (event) => {
     setWitness(event.target.value);
-  };
-  const handleChangeDiv = (event) => {
-    setDiv(event.target.value);
   };
 
   return (

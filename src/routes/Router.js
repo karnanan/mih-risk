@@ -45,6 +45,7 @@ const DIVRiskList = Loadable(lazy(() => import('../views/pages/risks/DIVRiskList
 const ReviewRisk = Loadable(lazy(() => import('../views/pages/risks/ReviewRisk')));
 const AllRiskList = Loadable(lazy(() => import('../views/pages/risks/AllRiskList')));
 const ConsiderRisk = Loadable(lazy(() => import('../views/pages/risks/ConsiderRisk')));
+const EvaluateRisk = Loadable(lazy(() => import('../views/pages/risks/EvaluateRisk')));
 
 // widget
 const WidgetCards = Loadable(lazy(() => import('../views/widgets/cards/WidgetCards')));
@@ -153,6 +154,7 @@ const Router = [
       { path: '/pages/reviewrisk', element: <ReviewRisk /> },
       { path: '/pages/allrisklist', element: <AllRiskList /> },
       { path: '/pages/considerrisk', element: <ConsiderRisk /> },
+      { path: '/pages/evaluaterisk', element: <EvaluateRisk /> },
       { path: '/pages/faq', element: <Faq /> },
       { path: '/forms/form-elements/autocomplete', element: <MuiAutoComplete /> },
       { path: '/forms/form-elements/button', element: <MuiButton /> },

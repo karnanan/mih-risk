@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PageContainer from 'src/components/container/PageContainer';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import { Grid, Tabs, Tab, Box, CardContent, Divider } from '@mui/material';
+import { Grid, Tabs, Tab, Box, CardContent, Divider, Typography } from '@mui/material';
 
 // components
 import BlankCard from '../../../components/shared/BlankCard';
@@ -87,6 +87,12 @@ const ConsiderRisk = () => {
                 <PendingConsiderTable />
               </TabPanel>
               <TabPanel value={value} index={1}>
+                <CardContent>
+                  <Typography variant="h5" mb={2}>
+                    พิจารณาความเสี่ยง
+                  </Typography>
+                  <Divider sx={{ my: 1 }} />
+                </CardContent>
                 <ConsiderRiskForm />
               </TabPanel>
             </CardContent>

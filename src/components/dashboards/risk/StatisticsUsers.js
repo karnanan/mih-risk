@@ -1,8 +1,5 @@
 import React from 'react';
-import DashboardCard from '../../shared/DashboardCard';
-import CustomSelect from '../../forms/theme-elements/CustomSelect';
 import {
-  MenuItem,
   Typography,
   Box,
   Table,
@@ -11,7 +8,6 @@ import {
   TableHead,
   TableRow,
   Avatar,
-  Chip,
   TableContainer,
   Stack,
 } from '@mui/material';

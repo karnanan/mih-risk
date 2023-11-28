@@ -1,15 +1,10 @@
 import * as React from 'react';
 import PageContainer from 'src/components/container/PageContainer';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import { Grid, Tabs, Tab, Box, CardContent, Divider } from '@mui/material';
+import { Grid, Box, CardContent } from '@mui/material';
 
 // components
-import AccountTab from '../../../components/pages/account-setting/AccountTab';
-import { IconArticle, IconFileDescription, IconLock, IconEdit } from '@tabler/icons';
 import BlankCard from '../../../components/shared/BlankCard';
-import NotificationTab from '../../../components/pages/account-setting/NotificationTab';
-import BillsTab from '../../../components/pages/account-setting/BillsTab';
-import SecurityTab from '../../../components/pages/account-setting/SecurityTab';
 import NewRiskForm from 'src/components/pages/risk/NewRiskForm';
 
 const BCrumb = [

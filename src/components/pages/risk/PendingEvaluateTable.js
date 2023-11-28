@@ -13,11 +13,11 @@ import {
   Button,
 } from '@mui/material';
 
-import PendingConsiderData from 'src/_mockApis/risk/AllRiskData';
+import PendingEvaluateData from 'src/_mockApis/risk/RiskEvaluateData';
 
-const PendingConsider = PendingConsiderData;
+const PendingEvaluate = PendingEvaluateData;
 
-const PendingConsiderTable = () => {
+const PendingEvaluateTable = () => {
   return (
     <Box mt={4}>
       <Box sx={{ maxWidth: '260px', ml: 'auto' }} mb={3}>
@@ -40,16 +40,16 @@ const PendingConsiderTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {PendingConsider.map((PendingConsider) => (
-              <TableRow key={PendingConsider.Id} hover>
+            {PendingEvaluate.map((PendingEvaluate) => (
+              <TableRow key={PendingEvaluate.Id} hover>
                 <TableCell>
                   <Button size="small">ดำเนินการ</Button>
                 </TableCell>
                 <TableCell>
-                  <Typography>{PendingConsider.Id}</Typography>
+                  <Typography>{PendingEvaluate.Id}</Typography>
                 </TableCell>
                 <TableCell>
-                  <Typography>{PendingConsider.riskType}</Typography>
+                  <Typography>{PendingEvaluate.riskType}</Typography>
                 </TableCell>
 
                 <TableCell sx={{ maxWidth: '650px' }}>
@@ -59,7 +59,7 @@ const PendingConsiderTable = () => {
                     // variant="subtitle2"
                     // fontWeight="400"
                   >
-                    {PendingConsider.riskDetail}
+                    {PendingEvaluate.riskDetail}
                   </Typography>
                 </TableCell>
               </TableRow>
@@ -74,4 +74,4 @@ const PendingConsiderTable = () => {
   );
 };
 
-export default PendingConsiderTable;
+export default PendingEvaluateTable;

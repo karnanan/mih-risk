@@ -1,21 +1,5 @@
 import React from 'react';
-import {
-  CardContent,
-  Grid,
-  Typography,
-  MenuItem,
-  Box,
-  Avatar,
-  Button,
-  Stack,
-  Divider,
-  Autocomplete,
-  FormControlLabel,
-  RadioGroup,
-  FormControl,
-  InputAdornment,
-} from '@mui/material';
-import { useSelector } from 'react-redux';
+import { CardContent, Grid, Typography, Stack, Divider } from '@mui/material';
 
 const ReviewDetail = () => {
   return (

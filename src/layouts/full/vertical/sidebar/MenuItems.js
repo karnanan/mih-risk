@@ -1,14 +1,11 @@
 import {
-  IconBoxMultiple,
-  IconNotes,
   IconEdit,
-  IconFileDescription,
-  IconFiles,
   IconBorderAll,
   IconChartLine,
   IconAperture,
   IconPencilPlus,
   IconFolder,
+  IconHighlight,
 } from '@tabler/icons';
 
 import { uniqueId } from 'lodash';
@@ -42,7 +39,7 @@ const Menuitems = [
     icon: IconEdit,
     href: '/pages/reviewrisk',
     chip: '2',
-    chipColor: 'warning',
+    chipColor: 'error',
   },
   {
     id: uniqueId(),
@@ -53,9 +50,17 @@ const Menuitems = [
   {
     id: uniqueId(),
     title: 'ความเสี่ยงรอพิจารณา',
-    icon: IconEdit,
+    icon: IconHighlight,
     href: '/pages/considerrisk',
     chip: '10',
+    chipColor: 'warning',
+  },
+  {
+    id: uniqueId(),
+    title: 'ความเสี่ยงรอประเมิน',
+    icon: IconHighlight,
+    href: '/pages/evaluaterisk',
+    chip: '7',
     chipColor: 'warning',
   },
   {

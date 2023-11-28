@@ -1,21 +1,5 @@
 import React from 'react';
-import {
-  CardContent,
-  Grid,
-  Typography,
-  MenuItem,
-  Box,
-  Avatar,
-  Button,
-  Stack,
-  Divider,
-  Autocomplete,
-  FormControlLabel,
-  RadioGroup,
-  FormControl,
-  InputAdornment,
-} from '@mui/material';
-import { useSelector } from 'react-redux';
+import { CardContent, Grid, Typography, Box, Avatar, Stack, Divider } from '@mui/material';
 
 const RiskDetail = () => {
   return (
@@ -23,10 +7,6 @@ const RiskDetail = () => {
       <Grid item xs={12}>
         <Stack>
           <CardContent>
-            <Typography variant="h5" mb={1}>
-              ทบทวนความเสี่ยง
-            </Typography>
-            <Divider sx={{ my: 3 }} />
             <Grid container spacing={3}>
               <Grid item xs={12} sm={2}>
                 <Typography variant="subtitle2" fontWeight={600}>

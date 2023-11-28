@@ -1,24 +1,13 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import { useTheme } from '@mui/material/styles';
-import { Stack, Typography, Avatar, Box, Grid } from '@mui/material';
-import DashboardCard from '../../shared/DashboardCard';
-import { IconNumber1, IconNumber2, IconNumber3, IconNumber4 } from '@tabler/icons';
+import { Typography, Grid } from '@mui/material';
+
 import ParentCard from '../../../components/shared/ParentCard';
 
 const StatisticsNonClinicCard = () => {
   // chart color
   const theme = useTheme();
-  const primary = theme.palette.primary.main;
-  const primarylight = theme.palette.primary.light;
-  const error = theme.palette.error.main;
-  const errorlight = theme.palette.error.light;
-  const warning = theme.palette.warning.main;
-  const warninglight = theme.palette.warning.light;
-  const secondary = theme.palette.secondary.main;
-  const secondarylight = theme.palette.secondary.light;
-  const success = theme.palette.success.main;
-  const successlight = theme.palette.success.light;
   const textColor = theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.8)' : '#2A3547';
 
   const optionsdoughnutchart = {

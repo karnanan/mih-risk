@@ -10,10 +10,6 @@ import {
   Stack,
   Divider,
   Autocomplete,
-  FormControlLabel,
-  RadioGroup,
-  FormControl,
-  InputAdornment,
 } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -23,8 +19,6 @@ import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import CustomTextField from '../../forms/theme-elements/CustomTextField';
 import CustomFormLabel from '../../forms/theme-elements/CustomFormLabel';
 import CustomSelect from '../../forms/theme-elements/CustomSelect';
-import CustomRadio from '../../forms/theme-elements/CustomRadio';
-import { PropTypes } from 'prop-types';
 
 // ประเภทความเสี่ยง
 const risktypes = [
@@ -142,11 +136,6 @@ const ConsiderRiskForm = () => {
       <Grid item xs={12}>
         <Stack>
           <CardContent>
-            <Typography variant="h5" mb={1}>
-              พิจารณาข้อมูลความเสี่ยง
-            </Typography>
-            <Divider sx={{ my: 3 }} />
-
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
                 <CustomFormLabel
@@ -428,7 +417,7 @@ const ConsiderRiskForm = () => {
                   </Grid>
                 </Box>
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={2}>
                 <CustomFormLabel
                   sx={{
                     mt: 0,
@@ -451,14 +440,77 @@ const ConsiderRiskForm = () => {
                   ))}
                 </CustomSelect>
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={5}>
                 <CustomFormLabel
                   sx={{
                     mt: 0,
                   }}
                   htmlFor="text-risktype"
                 >
-                  ประเภทความเสี่ยง
+                  คณะกรรมการที่เกี่ยวข้อง
+                </CustomFormLabel>
+                <CustomSelect
+                  fullWidth
+                  id="text-risktype"
+                  variant="outlined"
+                  value={risktype}
+                  onChange={handleChangeRiskType}
+                >
+                  {risktypes.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </CustomSelect>
+              </Grid>
+              <Grid item xs={12} sm={5}>
+                <CustomFormLabel
+                  sx={{
+                    mt: 0,
+                  }}
+                  htmlFor="text-risktype"
+                >
+                  เครื่องมือเครื่องใช้
+                </CustomFormLabel>
+                <CustomSelect
+                  fullWidth
+                  id="text-risktype"
+                  variant="outlined"
+                  value={risktype}
+                  onChange={handleChangeRiskType}
+                >
+                  {risktypes.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </CustomSelect>
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <CustomFormLabel
+                  sx={{
+                    mt: 0,
+                  }}
+                  htmlFor="text-suggestion"
+                >
+                  อื่นๆ
+                </CustomFormLabel>
+                <CustomTextField
+                  id="text-suggestion"
+                  multiline
+                  rows={2}
+                  variant="outlined"
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <CustomFormLabel
+                  sx={{
+                    mt: 0,
+                  }}
+                  htmlFor="text-risktype"
+                >
+                  หน่วยงานที่ต้องทบทวน
                 </CustomFormLabel>
                 <CustomSelect
                   fullWidth

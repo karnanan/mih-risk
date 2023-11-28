@@ -2,29 +2,18 @@ import React from 'react';
 import {
   CardContent,
   Grid,
-  Typography,
-  MenuItem,
-  Box,
-  Avatar,
   Button,
   Stack,
-  Divider,
-  Autocomplete,
   FormControlLabel,
   RadioGroup,
   FormControl,
   InputAdornment,
 } from '@mui/material';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 
 // components
 import CustomTextField from '../../forms/theme-elements/CustomTextField';
 import CustomFormLabel from '../../forms/theme-elements/CustomFormLabel';
-import CustomSelect from '../../forms/theme-elements/CustomSelect';
 import CustomRadio from '../../forms/theme-elements/CustomRadio';
-import { PropTypes } from 'prop-types';
 
 const ReviewRiskForm = () => {
   const [value, setValue] = React.useState('');

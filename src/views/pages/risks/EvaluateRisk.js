@@ -5,11 +5,11 @@ import { Grid, Tabs, Tab, Box, CardContent, Divider, Typography } from '@mui/mat
 
 // components
 import BlankCard from '../../../components/shared/BlankCard';
+import { IconArticle, IconBell } from '@tabler/icons';
+import PendingEvaluateTable from 'src/components/pages/risk/PendingEvaluateTable';
 import RiskDetail from 'src/components/pages/risk/RiskDetail';
 import ReviewDetail from 'src/components/pages/risk/ReviewDetail';
-import ReviewForm from 'src/components/pages/risk/ReviewForm';
-import { IconArticle, IconBell } from '@tabler/icons';
-import PendingReviewTable from 'src/components/pages/risk/PendingReviewTable';
+import EvaluateRiskForm from 'src/components/pages/risk/EvaluateForm';
 
 const BCrumb = [
   {
@@ -17,7 +17,7 @@ const BCrumb = [
     title: 'Home',
   },
   {
-    title: 'ความเสี่ยงรอทบทวน',
+    title: 'ความเสี่ยงรอประเมิน',
   },
 ];
 
@@ -44,7 +44,7 @@ function a11yProps(index) {
   };
 }
 
-const ReviewRisk = () => {
+const EvaluateRisk = () => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -52,9 +52,9 @@ const ReviewRisk = () => {
   };
 
   return (
-    <PageContainer title="ความเสี่ยงรอทบทวน" description="this is new risk page">
+    <PageContainer title="ความเสี่ยงรอประเมิน" description="this is pending consider risk page">
       {/* breadcrumb */}
-      <Breadcrumb title="ความเสี่ยงรอทบทวน" items={BCrumb} />
+      <Breadcrumb title="ความเสี่ยงรอประเมิน" items={BCrumb} />
       {/* end breadcrumb */}
 
       <Grid container spacing={3}>
@@ -71,14 +71,14 @@ const ReviewRisk = () => {
                 <Tab
                   iconPosition="start"
                   icon={<IconBell size="22" />}
-                  label="รายการความเสี่ยงรอทบทวน"
+                  label="รายการความเสี่ยงรอประเมิน"
                   {...a11yProps(0)}
                 />
 
                 <Tab
                   iconPosition="start"
                   icon={<IconArticle size="22" />}
-                  label="ทบทวนความเสี่ยง"
+                  label="ประเมินความเสี่ยง"
                   {...a11yProps(1)}
                 />
               </Tabs>
@@ -86,19 +86,18 @@ const ReviewRisk = () => {
             <Divider />
             <CardContent>
               <TabPanel value={value} index={0}>
-                <PendingReviewTable />
+                <PendingEvaluateTable />
               </TabPanel>
               <TabPanel value={value} index={1}>
                 <CardContent>
                   <Typography variant="h5" mb={2}>
-                    ทบทวนความเสี่ยง
+                    ประเมินความเสี่ยง
                   </Typography>
                   <Divider sx={{ my: 1 }} />
                 </CardContent>
                 <RiskDetail />
-                {/* ReviewDetail แสดงข้อมูลประวัติการทบทวนความเสี่ยงเดิม กรณีทบทวนซ้ำ */}
                 <ReviewDetail />
-                <ReviewForm />
+                <EvaluateRiskForm />
               </TabPanel>
             </CardContent>
           </BlankCard>
@@ -108,4 +107,4 @@ const ReviewRisk = () => {
   );
 };
 
-export default ReviewRisk;
+export default EvaluateRisk;

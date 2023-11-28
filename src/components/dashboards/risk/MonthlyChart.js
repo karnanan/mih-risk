@@ -2,22 +2,18 @@ import React from 'react';
 import Chart from 'react-apexcharts';
 import { useTheme } from '@mui/material/styles';
 import DashboardCard from '../../shared/DashboardCard';
-import { MenuItem, Grid, Stack, Typography, Button, Avatar, Box } from '@mui/material';
-import { IconGridDots } from '@tabler/icons';
-import ParentCard from '../../../components/shared/ParentCard';
-import CustomSelect from 'src/components/forms/theme-elements/CustomSelect';
+import { Grid, Stack, Typography, Avatar, Box } from '@mui/material';
 
 const MonthlyChart = () => {
-  const [year, setYear] = React.useState('1');
+  // const [year, setYear] = React.useState('1');
 
-  const handleChange = (event) => {
-    setYear(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   setYear(event.target.value);
+  // };
 
   // chart color
   const theme = useTheme();
   const primary = theme.palette.primary.main;
-  const secondary = theme.palette.secondary.main;
   const warning = theme.palette.warning.main;
 
   const optionslinechart = {

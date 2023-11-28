@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Grid } from '@mui/material';
 import TopCards from '../../../components/dashboards/risk/TopCards';
 import MonthlyChart from '../../../components/dashboards/risk/MonthlyChart';
-import Welcome from 'src/layouts/full/shared/welcome/Welcome';
 import StatisticsClinicCard from '../../../components/dashboards/risk/StatisticsClinicCard';
 import StatisticsNonClinicCard from '../../../components/dashboards/risk/StatisticsNonClinicCard';
 import StatisticsUsers from '../../../components/dashboards/risk/StatisticsUsers';
@@ -32,8 +31,6 @@ const Modern = () => {
           <StatisticsUsers />
         </Grid>
       </Grid>
-
-      <Welcome />
     </Box>
   );
 };
