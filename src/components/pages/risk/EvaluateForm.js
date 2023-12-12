@@ -1,4 +1,6 @@
 import React from 'react';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 import {
   CardContent,
   Grid,
@@ -7,17 +9,14 @@ import {
   FormControlLabel,
   RadioGroup,
   FormControl,
-  InputAdornment,
+  FormHelperText,
   MenuItem,
 } from '@mui/material';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 
 // components
 import CustomTextField from '../../forms/theme-elements/CustomTextField';
 import CustomFormLabel from '../../forms/theme-elements/CustomFormLabel';
-import CustomRadio from '../../forms/theme-elements/CustomRadio';
+
 import CustomSelect from '../../forms/theme-elements/CustomSelect';
 
 // ประเมินความเสี่ยง
@@ -30,11 +29,12 @@ const evaluates = [
     value: 'failed',
     label: 'ไม่ผ่าน',
   },
-  {
-    value: 'repaeat-review',
-    label: 'ทบทวนซ้ำ',
-  },
 ];
+
+const validationSchema = yup.object({
+  EvaluateDate: yup.string().required('กรุณาระบุวันที่เข้าประเมิน'),
+  Evaluate: yup.string().required('กรุณาระบุผลการประเมิน'),
+});
 
 const EvaluateRiskForm = () => {
   const [value, setValue] = React.useState('');
@@ -48,87 +48,106 @@ const EvaluateRiskForm = () => {
     setEvaluate(event.target.value);
   };
 
+  const formik = useFormik({
+    initialValues: {
+      EvaluateDate: '',
+      Evaluate: '',
+    },
+    validationSchema,
+  });
+
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>
         <Stack>
           <CardContent>
-            <Grid container spacing={3}>
-              <Grid item xs={12} sm={6}>
-                <CustomFormLabel
-                  sx={{
-                    mt: 0,
-                  }}
-                  htmlFor="text-date-time"
-                >
-                  วันที่เข้าประเมิน
-                </CustomFormLabel>
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <MobileDateTimePicker
-                    placeholder="Start date"
-                    onChange={() => {}}
-                    renderInput={(inputProps) => (
-                      <CustomTextField
-                        fullWidth
-                        variant="outlined"
-                        size="small"
-                        inputProps={{ 'aria-label': 'basic date picker' }}
-                        {...inputProps}
-                      />
-                    )}
-                    value={new Date()}
+            <form onSubmit={formik.handleSubmit}>
+              <Grid container spacing={3}>
+                <Grid item xs={12} sm={6}>
+                  <CustomFormLabel
+                    sx={{
+                      mt: 0,
+                    }}
+                    htmlFor="evaluateDate"
+                  >
+                    วันที่เข้าประเมิน
+                  </CustomFormLabel>
+
+                  <CustomTextField
+                    labelId="evaluateDate"
+                    id="evaluateDate"
+                    fullWidth
+                    name="evaluateDate"
+                    type="date"
+                    variant="outlined"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                   />
-                </LocalizationProvider>
+                  {formik.errors.EvaluateDate && (
+                    <FormHelperText error id="standard-weight-helper-text-email-login">
+                      {' '}
+                      {formik.errors.EvaluateDate}{' '}
+                    </FormHelperText>
+                  )}
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <CustomFormLabel
+                    sx={{
+                      mt: 0,
+                    }}
+                    htmlFor="evaluate"
+                  >
+                    ผลการประเมิน
+                  </CustomFormLabel>
+                  <CustomSelect
+                    fullWidth
+                    id="evaluate"
+                    variant="outlined"
+                    value={formik.values.evaluate}
+                    onChange={formik.handleChange}
+                  >
+                    {evaluates.map((option) => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </CustomSelect>
+                  {formik.errors.Evaluate && (
+                    <FormHelperText error id="standard-weight-helper-text-email-login">
+                      {' '}
+                      {formik.errors.Evaluate}{' '}
+                    </FormHelperText>
+                  )}
+                </Grid>
+
+                <Grid item xs={12} sm={12}>
+                  <CustomFormLabel
+                    sx={{
+                      mt: 0,
+                    }}
+                    htmlFor="text-risk-detail"
+                  >
+                    ข้อเสนอแนะ
+                  </CustomFormLabel>
+                  <CustomTextField
+                    id="text-risk-detail"
+                    multiline
+                    rows={2}
+                    variant="outlined"
+                    fullWidth
+                  />
+                </Grid>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <CustomFormLabel
-                  sx={{
-                    mt: 0,
-                  }}
-                  htmlFor="text-evaluate"
-                >
-                  ประเมินความเสี่ยง
-                </CustomFormLabel>
-                <CustomSelect
-                  fullWidth
-                  id="text-evaluate"
-                  variant="outlined"
-                  value={evaluate}
-                  onChange={handleChangeEvaluate}
-                >
-                  {evaluates.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </CustomSelect>
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <CustomFormLabel
-                  sx={{
-                    mt: 0,
-                  }}
-                  htmlFor="text-risk-detail"
-                >
-                  ข้อเสนอแนะ
-                </CustomFormLabel>
-                <CustomTextField
-                  id="text-risk-detail"
-                  multiline
-                  rows={2}
-                  variant="outlined"
-                  fullWidth
-                />
-              </Grid>
-            </Grid>
-            <Stack direction="row" spacing={2} sx={{ justifyContent: 'end' }} mt={3}>
-              <Button size="large" variant="contained" color="primary">
-                Save
-              </Button>
-              <Button size="large" variant="text" color="error">
-                Cancel
-              </Button>
-            </Stack>
+              <Stack direction="row" spacing={2} sx={{ justifyContent: 'end' }} mt={3}>
+                <Button size="large" variant="contained" color="primary" type="submit">
+                  Save
+                </Button>
+                <Button size="large" variant="text" color="error">
+                  Cancel
+                </Button>
+              </Stack>
+            </form>
           </CardContent>
         </Stack>
       </Grid>

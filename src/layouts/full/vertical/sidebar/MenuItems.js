@@ -35,7 +35,7 @@ const Menuitems = [
   },
   {
     id: uniqueId(),
-    title: 'ความเสี่ยงรอทบทวน',
+    title: 'ทบทวนความเสี่ยง',
     icon: IconEdit,
     href: '/pages/reviewrisk',
     chip: '2',
@@ -50,7 +50,15 @@ const Menuitems = [
   },
   {
     id: uniqueId(),
-    title: 'ความเสี่ยงรอพิจารณา',
+    title: 'วิเคราะห์ความเสี่ยง',
+    icon: IconHighlight,
+    href: '/pages/analyzerisk',
+    chip: '4',
+    chipColor: 'warning',
+  },
+  {
+    id: uniqueId(),
+    title: 'พิจารณาความเสี่ยง',
     icon: IconHighlight,
     href: '/pages/considerrisk',
     chip: '10',
@@ -58,7 +66,7 @@ const Menuitems = [
   },
   {
     id: uniqueId(),
-    title: 'ความเสี่ยงรอประเมิน',
+    title: 'ประเมินความเสี่ยง',
     icon: IconHighlight,
     href: '/pages/evaluaterisk',
     chip: '7',

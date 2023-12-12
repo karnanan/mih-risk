@@ -21,14 +21,14 @@ const topcards = [
   {
     href: '#',
     icon: icon3,
-    title: 'รอทบทวน',
+    title: 'รอวิเคราะห์',
     digits: '256',
     bgcolor: 'warning',
   },
   {
     href: '/apps/calendar',
     icon: icon4,
-    title: 'ทบทวนซ้ำ',
+    title: 'รอทบทวน',
     digits: '932',
     bgcolor: 'secondary',
   },

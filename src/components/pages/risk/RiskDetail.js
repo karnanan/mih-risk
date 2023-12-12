@@ -16,20 +16,35 @@ const RiskDetail = () => {
               <Grid item xs={12} sm={4}>
                 <Typography>6611001</Typography>
               </Grid>
+              <Grid item xs={12} sm={2}></Grid>
+              <Grid item xs={12} sm={4}></Grid>
+
               <Grid item xs={12} sm={2}>
-                <Typography></Typography>
+                <Typography variant="subtitle2" fontWeight={600}>
+                  ประเภท :
+                </Typography>
               </Grid>
               <Grid item xs={12} sm={4}>
-                <Typography></Typography>
+                <Typography>Clinical</Typography>
               </Grid>
 
               <Grid item xs={12} sm={2}>
                 <Typography variant="subtitle2" fontWeight={600}>
-                  ประเภทความเสี่ยง :
+                  ประเภท Clinical :
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={4}>
-                <Typography>Clinic</Typography>
+                <Typography>Common Clinical</Typography>
+              </Grid>
+              <Grid item xs={12} sm={2}>
+                <Typography variant="subtitle2" fontWeight={600}>
+                  เรื่อง :
+                </Typography>
+              </Grid>
+              <Grid item xs={12} sm={10}>
+                <Typography>
+                  ab illo inventore veritatis et quasi ab illo inventore veritatis et quasi
+                </Typography>
               </Grid>
               <Grid item xs={12} sm={2}>
                 <Typography variant="subtitle2" fontWeight={600}>
@@ -37,7 +52,7 @@ const RiskDetail = () => {
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={4}>
-                <Typography>02-12-2021</Typography>
+                <Typography>02-12-2021 : 16.00</Typography>
               </Grid>
               <Grid item xs={12} sm={2}>
                 <Typography variant="subtitle2" fontWeight={600}>
@@ -76,7 +91,7 @@ const RiskDetail = () => {
                   ผู้อยู่ในเหตุการณ์ :
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={10}>
+              <Grid item xs={12} sm={4}>
                 <Typography>Karnanan Purimanuruk</Typography>
               </Grid>
               <Grid item xs={12} sm={2}>
@@ -91,7 +106,7 @@ const RiskDetail = () => {
               </Grid>
               <Grid item xs={12} sm={2}>
                 <Typography variant="subtitle2" fontWeight={600}>
-                  รายละเอียดความเสี่ยง :
+                  รายละเอียด :
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={10}>

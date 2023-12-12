@@ -1,6 +1,6 @@
 import { Box, Grid, Typography, styled } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { setVisibilityFilter } from './RiskSlice';
+import { setVisibilityFilter } from './DIVRiskSlice';
 
 const BoxStyled = styled(Box)(() => ({
   padding: '30px',
@@ -12,7 +12,7 @@ const BoxStyled = styled(Box)(() => ({
   },
 }));
 
-const RiskFilter = () => {
+const AllRiskFilter = () => {
   const dispatch = useDispatch();
   const counter = useSelector((state) => state.riskReducer.risks);
   const pendingReview = counter.filter((r) => r.riskStatus === 'รอทบทวน').length;
@@ -80,4 +80,4 @@ const RiskFilter = () => {
   );
 };
 
-export default RiskFilter;
+export default AllRiskFilter;

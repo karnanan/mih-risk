@@ -1,4 +1,6 @@
-const RiskEvaluateData = [
+import mock from '../mock';
+
+const PendingReviewData = [
   {
     Id: 6611001,
     Category: 'Non Clinic',
@@ -207,4 +209,8 @@ const RiskEvaluateData = [
     Tool: 'RCA',
   },
 ];
-export default RiskEvaluateData;
+
+mock.onGet('/api/data/risk/PendingReviewData').reply(() => {
+  return [200, PendingReviewData];
+});
+export default PendingReviewData;

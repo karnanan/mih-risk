@@ -1,6 +1,6 @@
 import { Box, Grid, Typography, styled } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { setVisibilityFilter } from './RiskSlice';
+import { setVisibilityFilter } from './DIVRiskSlice';
 
 const BoxStyled = styled(Box)(() => ({
   padding: '30px',
@@ -12,14 +12,14 @@ const BoxStyled = styled(Box)(() => ({
   },
 }));
 
-const AllRiskFilter = () => {
+const DIVRiskFilter = () => {
   const dispatch = useDispatch();
   const counter = useSelector((state) => state.riskReducer.risks);
-  const pendingReview = counter.filter((r) => r.riskStatus === 'รอทบทวน').length;
-  const repeatReview = counter.filter((r) => r.riskStatus === 'ทบทวนซ้ำ').length;
-  const pendingEvaluation = counter.filter((r) => r.riskStatus === 'รอประเมิน').length;
-  const failed = counter.filter((r) => r.riskStatus === 'ไม่ผ่าน').length;
-  const passed = counter.filter((r) => r.riskStatus === 'ผ่าน').length;
+  const pendingReview = counter.filter((r) => r.Status === 'รอทบทวน').length;
+  const repeatReview = counter.filter((r) => r.Status === 'ทบทวนซ้ำ').length;
+  const pendingEvaluation = counter.filter((r) => r.Status === 'รอประเมิน').length;
+  const failed = counter.filter((r) => r.Status === 'ไม่ผ่าน').length;
+  const passed = counter.filter((r) => r.Status === 'ผ่าน').length;
   return (
     <Grid container spacing={3} textAlign="center">
       <Grid item xs={12} sm={6} lg={2}>
@@ -80,4 +80,4 @@ const AllRiskFilter = () => {
   );
 };
 
-export default AllRiskFilter;
+export default DIVRiskFilter;

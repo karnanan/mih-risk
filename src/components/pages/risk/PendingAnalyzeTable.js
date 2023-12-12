@@ -18,11 +18,11 @@ import {
   Button,
 } from '@mui/material';
 
-import RiskAnalyzeData from 'src/_mockApis/risk/RiskAnalyzeData';
+import PendingAnalyzeData from 'src/_mockApis/risk/PendingAnalyzeData';
 
-const RiskAnalyzeDataTable = RiskAnalyzeData;
+const PendingAnalyzeDataTable = PendingAnalyzeData;
 
-const PendingReviewTable = () => {
+const PendingAnalyzeTable = () => {
   return (
     <Box mt={4}>
       <Box sx={{ maxWidth: '260px', ml: 'auto' }} mb={3}>
@@ -40,34 +40,23 @@ const PendingReviewTable = () => {
                 <Typography variant="h6">ประเภท</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant="h6">เรื่อง</Typography>
+                <Typography variant="h6">ประเภท Clinical</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant="h6">สถานะ</Typography>
+                <Typography variant="h6">เรื่อง</Typography>
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {RiskAnalyzeDataTable.map((RiskAnalyzeDataTable) => (
-              <TableRow key={RiskAnalyzeDataTable.Id} hover>
+            {PendingAnalyzeDataTable.map((PendingAnalyzeDataTable) => (
+              <TableRow key={PendingAnalyzeDataTable.Id} hover>
                 <TableCell>
                   <Button size="small">ดำเนินการ</Button>
                 </TableCell>
-                <TableCell>{RiskAnalyzeDataTable.Id}</TableCell>
-                <TableCell>{RiskAnalyzeDataTable.Category}</TableCell>
-                <TableCell>{RiskAnalyzeDataTable.Subject}</TableCell>
-                <TableCell>
-                  <Chip
-                    sx={{
-                      backgroundColor:
-                        RiskAnalyzeDataTable.Status === 'รอทบทวน'
-                          ? (theme) => theme.palette.error.light
-                          : RiskAnalyzeDataTable.Status === 'ทบทวนซ้ำ',
-                    }}
-                    size="small"
-                    label={RiskAnalyzeDataTable.Status}
-                  />
-                </TableCell>
+                <TableCell>{PendingAnalyzeDataTable.Id}</TableCell>
+                <TableCell>{PendingAnalyzeDataTable.Category}</TableCell>
+                <TableCell>{PendingAnalyzeDataTable.subCategory}</TableCell>
+                <TableCell>{PendingAnalyzeDataTable.Subject}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -80,4 +69,4 @@ const PendingReviewTable = () => {
   );
 };
 
-export default PendingReviewTable;
+export default PendingAnalyzeTable;

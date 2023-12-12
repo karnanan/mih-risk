@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Grid } from '@mui/material';
 import TopCards from '../../components/dashboards/risk/TopCards';
 import MonthlyChart from '../../components/dashboards/risk/MonthlyChart';
+import MonthlyClinicalChart from '../../components/dashboards/risk/MonthlyClinicalChart';
 import StatisticsClinicCard from '../../components/dashboards/risk/StatisticsClinicCard';
 import StatisticsNonClinicCard from '../../components/dashboards/risk/StatisticsNonClinicCard';
 import StatisticsUsers from '../../components/dashboards/risk/StatisticsUsers';
@@ -17,6 +18,9 @@ const Modern = () => {
         {/* column */}
         <Grid item xs={12} lg={12}>
           <MonthlyChart />
+        </Grid>
+        <Grid item xs={12} lg={12}>
+          <MonthlyClinicalChart />
         </Grid>
         {/* column */}
         <Grid item xs={12} lg={6}>

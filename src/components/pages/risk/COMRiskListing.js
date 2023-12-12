@@ -13,7 +13,7 @@ import {
   Pagination,
   TableContainer,
 } from '@mui/material';
-import { fetchRisks, SearchRisk } from './AllRiskSlice';
+import { fetchRisks, SearchRisk } from './COMRiskSlice';
 
 const AllRiskListing = () => {
   const dispatch = useDispatch();

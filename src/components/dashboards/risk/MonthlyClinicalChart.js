@@ -13,8 +13,8 @@ const MonthlyChart = () => {
 
   // chart color
   const theme = useTheme();
-  const primary = theme.palette.primary.main;
-  const warning = theme.palette.warning.main;
+  const success = theme.palette.success.main;
+  const info = theme.palette.info.main;
 
   const optionslinechart = {
     chart: {
@@ -59,7 +59,7 @@ const MonthlyChart = () => {
     grid: {
       show: false,
     },
-    colors: [primary, warning],
+    colors: [success, info],
     dataLabels: {
       enabled: true,
     },
@@ -80,11 +80,11 @@ const MonthlyChart = () => {
   };
   const serieslinechart = [
     {
-      name: 'Clinical',
-      data: [28, 29, 33, 36, 32, 32, 33, 12, 11, 14, 18, 17],
+      name: 'Specific Clinical',
+      data: [20, 18, 40, 48, 22, 52, 66, 10, 25, 44, 68, 88],
     },
     {
-      name: 'None-Clinic',
+      name: 'Common Clinical',
       data: [20, 25, 29, 30, 25, 28, 35, 15, 5, 20, 16, 13],
     },
   ];
@@ -109,7 +109,7 @@ const MonthlyChart = () => {
     >
       <Grid container direction="row" justifyContent="center" alignItems="center" mb={6}>
         <Typography variant="h5" color="textSecondary">
-          จำนวนความเสี่ยงในแต่ละประเภท
+          จำนวนความเสี่ยงประเภท Clinical
         </Typography>
       </Grid>
       <Grid container direction="row" justifyContent="center" alignItems="center" spacing={3}>
@@ -117,24 +117,24 @@ const MonthlyChart = () => {
           <Stack container direction="row" justifyContent="center" alignItems="center" spacing={3}>
             <Stack direction="row" spacing={2}>
               <Avatar
-                sx={{ width: 9, mt: 1, height: 9, bgcolor: primary, svg: { display: 'none' } }}
+                sx={{ width: 9, mt: 1, height: 9, bgcolor: success, svg: { display: 'none' } }}
               ></Avatar>
               <Box>
                 <Typography variant="subtitle1" color="textSecondary">
-                  ความเสี่ยงประเภท Clinical
+                  ความเสี่ยงด้าน Specific Clinical
                 </Typography>
-                <Typography variant="h6">48,820</Typography>
+                <Typography variant="h6">20,820</Typography>
               </Box>
             </Stack>
             <Stack direction="row" spacing={2}>
               <Avatar
-                sx={{ width: 9, mt: 1, height: 9, bgcolor: warning, svg: { display: 'none' } }}
+                sx={{ width: 9, mt: 1, height: 9, bgcolor: info, svg: { display: 'none' } }}
               ></Avatar>
               <Box>
                 <Typography variant="subtitle1" color="textSecondary">
-                  ความเสี่ยงประเภท Non-Clinic
+                  ความเสี่ยงด้าน Common Clinical
                 </Typography>
-                <Typography variant="h6">26,498</Typography>
+                <Typography variant="h6">10,498</Typography>
               </Box>
             </Stack>
           </Stack>

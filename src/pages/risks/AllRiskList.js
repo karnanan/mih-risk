@@ -2,8 +2,8 @@ import { Grid, Tabs, Tab, Box, CardContent, Divider } from '@mui/material';
 import Breadcrumb from '../../layouts/full/shared/breadcrumb/Breadcrumb';
 import PageContainer from '../../components/container/PageContainer';
 import BlankCard from '../../components/shared/BlankCard';
-import AllRiskFilter from '../../components/pages/risk/AllRiskFilter';
-import AllRiskListing from '../../components/pages/risk/AllRiskListing';
+import RiskFilter from '../../components/pages/risk/DIVRiskFilter';
+import RiskListing from '../../components/pages/risk/DIVRiskListing';
 
 const BCrumb = [
   {
@@ -21,8 +21,8 @@ const AllRiskList = () => {
       <Breadcrumb title="รายการความเสี่ยง" items={BCrumb} />
       <BlankCard>
         <CardContent>
-          <AllRiskFilter />
-          <AllRiskListing />
+          <RiskFilter />
+          <RiskListing />
         </CardContent>
       </BlankCard>
     </PageContainer>

@@ -6,10 +6,10 @@ import { Grid, Tabs, Tab, Box, CardContent, Divider, Typography } from '@mui/mat
 // components
 import BlankCard from '../../components/shared/BlankCard';
 import { IconArticle, IconBell } from '@tabler/icons';
-import PendingConsiderTable from 'src/components/pages/risk/PendingConsiderTable';
-import ConsiderRiskForm from 'src/components/pages/risk/ConsiderForm';
-import RiskDetail from 'src/components/pages/risk/RiskDetail';
-import ReviewDetail from 'src/components/pages/risk/ReviewDetail';
+
+import AnalyzeForm from 'src/components/pages/risk/AnalyzeForm';
+
+import PendingAnalyzeTable from 'src/components/pages/risk/PendingAnalyzeTable';
 
 const BCrumb = [
   {
@@ -17,7 +17,7 @@ const BCrumb = [
     title: 'Home',
   },
   {
-    title: 'ความเสี่ยงรอพิจารณา',
+    title: 'ความเสี่ยงรอวิเคราะห์',
   },
 ];
 
@@ -44,7 +44,7 @@ function a11yProps(index) {
   };
 }
 
-const ConsiderRisk = () => {
+const AnalyzeRisk = () => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -52,9 +52,9 @@ const ConsiderRisk = () => {
   };
 
   return (
-    <PageContainer title="ความเสี่ยงรอพิจารณา" description="this is pending consider risk page">
+    <PageContainer title="ความเสี่ยงรอวิเคราะห์" description="this is pending consider risk page">
       {/* breadcrumb */}
-      <Breadcrumb title="ความเสี่ยงรอพิจารณา" items={BCrumb} />
+      <Breadcrumb title="ความเสี่ยงรอวิเคราะห์" items={BCrumb} />
       {/* end breadcrumb */}
 
       <Grid container spacing={3}>
@@ -71,14 +71,14 @@ const ConsiderRisk = () => {
                 <Tab
                   iconPosition="start"
                   icon={<IconBell size="22" />}
-                  label="รายการความเสี่ยงรอพิจารณา"
+                  label="ความเสี่ยงรอวิเคราะห์"
                   {...a11yProps(0)}
                 />
 
                 <Tab
                   iconPosition="start"
                   icon={<IconArticle size="22" />}
-                  label="พิจารณาความเสี่ยง"
+                  label="วิเคราะห์ความเสี่ยง"
                   {...a11yProps(1)}
                 />
               </Tabs>
@@ -86,18 +86,16 @@ const ConsiderRisk = () => {
             <Divider />
             <CardContent>
               <TabPanel value={value} index={0}>
-                <PendingConsiderTable />
+                <PendingAnalyzeTable />
               </TabPanel>
               <TabPanel value={value} index={1}>
                 <CardContent>
                   <Typography variant="h5" mb={2}>
-                    พิจารณาความเสี่ยง
+                    วิเคราะห์ความเสี่ยง
                   </Typography>
                   <Divider sx={{ my: 1 }} />
                 </CardContent>
-                <RiskDetail />
-                <ReviewDetail />
-                <ConsiderRiskForm />
+                <AnalyzeForm />
               </TabPanel>
             </CardContent>
           </BlankCard>
@@ -107,4 +105,4 @@ const ConsiderRisk = () => {
   );
 };
 
-export default ConsiderRisk;
+export default AnalyzeRisk;

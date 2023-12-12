@@ -1,18 +1,19 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-
 import {
   CardContent,
   Grid,
-  Typography,
+  FormHelperText,
   MenuItem,
+  Box,
+  Avatar,
   Button,
   Stack,
-  Divider,
+  Typography,
   Autocomplete,
-  FormHelperText,
-  Box,
+  ListSubheader,
+  FormControlLabel,
 } from '@mui/material';
 
 // components
@@ -103,6 +104,34 @@ const divs = [
   },
 ];
 
+// คณะกรรมการที่เกี่ยวข้อง
+const committees = [
+  {
+    value: 'IC',
+    label: 'IC',
+  },
+  {
+    value: 'RM',
+    label: 'RM',
+  },
+  {
+    value: 'ENV',
+    label: 'ENV',
+  },
+  {
+    value: 'PTC',
+    label: 'PTC',
+  },
+];
+
+// เครื่องมือเครื่องใช้
+const tools = [
+  {
+    value: 'RCA',
+    label: 'RCA',
+  },
+];
+
 const validationSchema = yup.object({
   Category: yup.string().required('กรุณาระบุประเภทความเสี่ยง'),
   SubCategory: yup.string().required('กรุณาระบุประเภทย่อยความเสี่ยงทางคลินิก'),
@@ -114,10 +143,17 @@ const validationSchema = yup.object({
   Detail: yup.string().required('กรุณาระบุรายละเอียดความเสี่ยง'),
   Management: yup.string().required('กรุณาระบุการแก้ไขเบื้องต้น'),
   Suggestion: yup.string().required('กรุณาระบุข้อเสนอแนะ'),
+  Tool: yup.string().required('กรุณาระบุความเห็น'),
+  Level: yup.string().required('กรุณาระบุระดับความเสี่ยง'),
+  Committee: yup.string().required('กรุณาระบุคณะกรรมการที่เกี่ยวข้อง'),
 });
 
-const NewRiskForm = () => {
-  const [div, setDiv] = React.useState('');
+const AnalyzeRiskForm = () => {
+  const [level, setLevel] = React.useState('');
+
+  const handleChangeLevel = (event) => {
+    setLevel(event.target.value);
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -131,6 +167,9 @@ const NewRiskForm = () => {
       Detail: '',
       Management: '',
       Suggestion: '',
+      Tool: '',
+      Level: '',
+      Committee: '',
     },
     validationSchema,
   });
@@ -140,11 +179,6 @@ const NewRiskForm = () => {
       <Grid item xs={12}>
         <Stack>
           <CardContent>
-            <Typography variant="h5" mb={1}>
-              บันทึกข้อมูลความเสี่ยง
-            </Typography>
-            <Divider sx={{ my: 3 }} />
-
             <form onSubmit={formik.handleSubmit}>
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={3}>
@@ -257,7 +291,7 @@ const NewRiskForm = () => {
                     id="riskDate"
                     fullWidth
                     name="riskDate"
-                    type="date"
+                    type="riskDate"
                     variant="outlined"
                     InputLabelProps={{
                       shrink: true,
@@ -480,21 +514,230 @@ const NewRiskForm = () => {
                   )}
                 </Grid>
                 <Grid item xs={12} sm={12}>
+                  <Box py={3}>
+                    <Typography variant="subtitle2" fontWeight={600}>
+                      Attachments (3)
+                    </Typography>
+                    <Grid container spacing={3}>
+                      <Grid item lg={4}>
+                        <Stack direction="row" gap={2} mt={2}>
+                          <Stack direction="row" gap={2} mt={2}>
+                            <Avatar
+                              variant="rounded"
+                              sx={{
+                                width: '48px',
+                                height: '48px',
+                                bgcolor: (theme) => theme.palette.grey[100],
+                              }}
+                            >
+                              <Avatar
+                                // src={attach.image}
+                                alt="av"
+                                variant="rounded"
+                                sx={{ width: '24px', height: '24px' }}
+                              ></Avatar>
+                            </Avatar>
+                            <Box mr={'auto'}>
+                              <Typography variant="subtitle2" fontWeight={600} mb={1}>
+                                Attachments-title-1.jpeg
+                              </Typography>
+                              <Typography variant="body2">2MB</Typography>
+                            </Box>
+                          </Stack>
+                          <Stack direction="row" gap={2} mt={2}>
+                            <Avatar
+                              variant="rounded"
+                              sx={{
+                                width: '48px',
+                                height: '48px',
+                                bgcolor: (theme) => theme.palette.grey[100],
+                              }}
+                            >
+                              <Avatar
+                                // src={attach.image}
+                                alt="av"
+                                variant="rounded"
+                                sx={{ width: '24px', height: '24px' }}
+                              ></Avatar>
+                            </Avatar>
+                            <Box mr={'auto'}>
+                              <Typography variant="subtitle2" fontWeight={600} mb={1}>
+                                Attachments-title-2.jpeg
+                              </Typography>
+                              <Typography variant="body2">2MB</Typography>
+                            </Box>
+                          </Stack>
+                          <Stack direction="row" gap={2} mt={2}>
+                            <Avatar
+                              variant="rounded"
+                              sx={{
+                                width: '48px',
+                                height: '48px',
+                                bgcolor: (theme) => theme.palette.grey[100],
+                              }}
+                            >
+                              <Avatar
+                                // src={attach.image}
+                                alt="av"
+                                variant="rounded"
+                                sx={{ width: '24px', height: '24px' }}
+                              ></Avatar>
+                            </Avatar>
+                            <Box mr={'auto'}>
+                              <Typography variant="subtitle2" fontWeight={600} mb={1}>
+                                Attachments-title-3.jpeg
+                              </Typography>
+                              <Typography variant="body2">2MB</Typography>
+                            </Box>
+                          </Stack>
+                        </Stack>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
                   <CustomFormLabel
                     sx={{
                       mt: 0,
                     }}
-                    htmlFor="file-upload"
+                    htmlFor="text-risklevel"
                   >
-                    แนบไฟล์
+                    ระดับความเสี่ยง
+                  </CustomFormLabel>
+                  <CustomSelect
+                    fullWidth
+                    id="text-risklevel"
+                    variant="outlined"
+                    value={level}
+                    onChange={handleChangeLevel}
+                  >
+                    {/* {risktypes.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))} */}
+                    <ListSubheader>Clinic</ListSubheader>
+                    <MenuItem value={1}>A</MenuItem>
+                    <MenuItem value={2}>B</MenuItem>
+                    <MenuItem value={3}>C</MenuItem>
+                    <MenuItem value={4}>D</MenuItem>
+                    <MenuItem value={5}>E</MenuItem>
+                    <MenuItem value={6}>F</MenuItem>
+                    <MenuItem value={7}>G</MenuItem>
+                    <MenuItem value={8}>H</MenuItem>
+                    <MenuItem value={9}>I</MenuItem>
+                    <ListSubheader>Non-clinic</ListSubheader>
+                    <MenuItem value={10}>1</MenuItem>
+                    <MenuItem value={11}>2</MenuItem>
+                    <MenuItem value={12}>3</MenuItem>
+                    <MenuItem value={13}>4</MenuItem>
+                  </CustomSelect>
+                  {formik.errors.Level && (
+                    <FormHelperText error id="standard-weight-helper-text-email-login">
+                      {' '}
+                      {formik.errors.Level}{' '}
+                    </FormHelperText>
+                  )}
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <CustomFormLabel
+                    sx={{
+                      mt: 0,
+                    }}
+                    htmlFor="text-divs"
+                  >
+                    เครื่องมือเครื่องใช้
+                  </CustomFormLabel>
+                  <CustomSelect
+                    labelId="tool"
+                    id="tool"
+                    fullWidth
+                    name="tool"
+                    variant="outlined"
+                    value={formik.values.Tool}
+                    onChange={formik.handleChange}
+                  >
+                    {tools.map((option) => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </CustomSelect>
+                  {formik.errors.Tool && (
+                    <FormHelperText error id="standard-weight-helper-text-email-login">
+                      {' '}
+                      {formik.errors.Tool}{' '}
+                    </FormHelperText>
+                  )}
+                </Grid>
+                <Grid item xs={12} sm={12}>
+                  <CustomFormLabel
+                    sx={{
+                      mt: 0,
+                    }}
+                    htmlFor="text-divs"
+                  >
+                    คณะกรรมการที่เกี่ยวข้อง (ระบุได้มากกว่า 1)
+                  </CustomFormLabel>
+                  <Autocomplete
+                    multiple
+                    fullWidth
+                    id="tags-outlined"
+                    options={committees}
+                    getOptionLabel={(option) => option.label}
+                    filterSelectedOptions
+                    renderInput={(params) => <CustomTextField {...params} />}
+                  />
+                  {formik.errors.Committee && (
+                    <FormHelperText error id="standard-weight-helper-text-email-login">
+                      {' '}
+                      {formik.errors.Committee}{' '}
+                    </FormHelperText>
+                  )}
+                </Grid>
+                <Grid item xs={12} sm={12}>
+                  <CustomFormLabel
+                    sx={{
+                      mt: 0,
+                    }}
+                    htmlFor="text-suggestion"
+                  >
+                    อื่นๆ
                   </CustomFormLabel>
                   <CustomTextField
-                    id="file-upload"
-                    type="file"
-                    inputProps={{ accept: 'application/.jpeg' }}
+                    id="text-suggestion"
+                    multiline
+                    rows={2}
                     variant="outlined"
                     fullWidth
                   />
+                </Grid>
+                <Grid item xs={12} sm={12}>
+                  <CustomFormLabel
+                    sx={{
+                      mt: 0,
+                    }}
+                    htmlFor="text-divs"
+                  >
+                    หน่วยงานที่ต้องทบทวน (ระบุได้มากกว่า 1 หน่วยงาน)
+                  </CustomFormLabel>
+                  <Autocomplete
+                    labelId="division"
+                    id="division"
+                    fullWidth
+                    name="division"
+                    multiple
+                    options={divs}
+                    getOptionLabel={(option) => option.label}
+                    filterSelectedOptions
+                    renderInput={(params) => <CustomTextField {...params} />}
+                  />
+                  {formik.errors.Division && (
+                    <FormHelperText error id="standard-weight-helper-text-email-login">
+                      {' '}
+                      {formik.errors.Division}{' '}
+                    </FormHelperText>
+                  )}
                 </Grid>
               </Grid>
               <Stack direction="row" spacing={2} sx={{ justifyContent: 'end' }} mt={3}>
@@ -513,4 +756,4 @@ const NewRiskForm = () => {
   );
 };
 
-export default NewRiskForm;
+export default AnalyzeRiskForm;

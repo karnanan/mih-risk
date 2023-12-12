@@ -11,9 +11,10 @@ import {
   Pagination,
   TableContainer,
   Button,
+  Chip,
 } from '@mui/material';
 
-import PendingConsiderData from 'src/_mockApis/risk/AllRiskData';
+import PendingConsiderData from 'src/_mockApis/risk/PendingConsiderData';
 
 const PendingConsider = PendingConsiderData;
 
@@ -35,7 +36,22 @@ const PendingConsiderTable = () => {
                 <Typography variant="h6">ประเภท</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant="h6">รายละเอียดความเสี่ยง</Typography>
+                <Typography variant="h6">ประเภท Clinical</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="h6">ระดับ</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="h6">คณะกรรมการ</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="h6">เครื่องมือ</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="h6">เรื่อง</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="h6">สถานะ</Typography>
               </TableCell>
             </TableRow>
           </TableHead>
@@ -45,22 +61,24 @@ const PendingConsiderTable = () => {
                 <TableCell>
                   <Button size="small">ดำเนินการ</Button>
                 </TableCell>
+                <TableCell>{PendingConsider.Id}</TableCell>
+                <TableCell>{PendingConsider.Category}</TableCell>
+                <TableCell>{PendingConsider.subCategory}</TableCell>
+                <TableCell>{PendingConsider.Level}</TableCell>
+                <TableCell>{PendingConsider.Committee}</TableCell>
+                <TableCell>{PendingConsider.Tool}</TableCell>
+                <TableCell>{PendingConsider.Subject}</TableCell>
                 <TableCell>
-                  <Typography>{PendingConsider.Id}</Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography>{PendingConsider.riskType}</Typography>
-                </TableCell>
-
-                <TableCell sx={{ maxWidth: '650px' }}>
-                  <Typography
-                    // color="textSecondary"
-                    noWrap
-                    // variant="subtitle2"
-                    // fontWeight="400"
-                  >
-                    {PendingConsider.riskDetail}
-                  </Typography>
+                  <Chip
+                    sx={{
+                      backgroundColor:
+                        PendingConsider.Status === 'รอประเมิน'
+                          ? (theme) => theme.palette.error.light
+                          : PendingConsider.Status === 'ทบทวนซ้ำ',
+                    }}
+                    size="small"
+                    label={PendingConsider.Status}
+                  />
                 </TableCell>
               </TableRow>
             ))}

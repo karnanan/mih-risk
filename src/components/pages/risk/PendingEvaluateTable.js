@@ -35,7 +35,19 @@ const PendingEvaluateTable = () => {
                 <Typography variant="h6">ประเภท</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant="h6">รายละเอียดความเสี่ยง</Typography>
+                <Typography variant="h6">ประเภท Clinical</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="h6">ระดับ</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="h6">คณะกรรมการ</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="h6">เครื่องมือ</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="h6">เรื่อง</Typography>
               </TableCell>
             </TableRow>
           </TableHead>
@@ -49,18 +61,22 @@ const PendingEvaluateTable = () => {
                   <Typography>{PendingEvaluate.Id}</Typography>
                 </TableCell>
                 <TableCell>
-                  <Typography>{PendingEvaluate.riskType}</Typography>
+                  <Typography>{PendingEvaluate.Category}</Typography>
                 </TableCell>
-
-                <TableCell sx={{ maxWidth: '650px' }}>
-                  <Typography
-                    // color="textSecondary"
-                    noWrap
-                    // variant="subtitle2"
-                    // fontWeight="400"
-                  >
-                    {PendingEvaluate.riskDetail}
-                  </Typography>
+                <TableCell>
+                  <Typography>{PendingEvaluate.subCategory}</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography>{PendingEvaluate.Level}</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography>{PendingEvaluate.Committee}</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography>{PendingEvaluate.Tool}</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography>{PendingEvaluate.Subject}</Typography>
                 </TableCell>
               </TableRow>
             ))}

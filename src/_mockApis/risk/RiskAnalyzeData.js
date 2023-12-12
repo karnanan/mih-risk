@@ -1,4 +1,6 @@
-const RiskEvaluateData = [
+import mock from '../mock';
+
+const RiskAnalyzeData = [
   {
     Id: 6611001,
     Category: 'Non Clinic',
@@ -17,10 +19,12 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'ทบทวนซ้ำ',
-    Level: '9',
-    Committee: 'IC',
+    Status: 'รอทบทวน',
+    Level: 'A',
     Tool: 'RCA',
+    Committee: 'IC',
+    OtherAnalyze: '',
+    DivReview: '',
   },
   {
     Id: 6611002,
@@ -40,10 +44,12 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'รอประเมิน',
+    Status: 'ทบทวนซ้ำ',
     Level: 'A',
+    Tool: 'RCA',
     Committee: 'IC',
-    Tool: '',
+    OtherAnalyze: '',
+    DivReview: '',
   },
   {
     Id: 6611003,
@@ -63,10 +69,12 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'รอประเมิน',
+    Status: 'รอทบทวน',
     Level: 'A',
+    Tool: 'RCA',
     Committee: 'IC',
-    Tool: '',
+    OtherAnalyze: '',
+    DivReview: '',
   },
   {
     Id: 6611004,
@@ -86,10 +94,12 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'รอประเมิน',
-    Level: '9',
-    Committee: 'IC',
+    Status: 'รอทบทวน',
+    Level: 'A',
     Tool: 'RCA',
+    Committee: 'IC',
+    OtherAnalyze: '',
+    DivReview: '',
   },
   {
     Id: 6611005,
@@ -109,10 +119,12 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'ทบทวนซ้ำ',
-    Level: 'H',
-    Committee: 'IC',
+    Status: 'รอทบทวน',
+    Level: 'A',
     Tool: 'RCA',
+    Committee: 'IC',
+    OtherAnalyze: '',
+    DivReview: '',
   },
   {
     Id: 6611006,
@@ -132,10 +144,12 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'ทบทวนซ้ำ',
+    Status: 'รอทบทวน',
     Level: 'A',
-    Committee: 'ENV, IC',
-    Tool: '',
+    Tool: 'RCA',
+    Committee: 'IC',
+    OtherAnalyze: '',
+    DivReview: '',
   },
   {
     Id: 6611007,
@@ -156,9 +170,11 @@ const RiskEvaluateData = [
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
     Status: 'ทบทวนซ้ำ',
-    Level: '5',
-    Committee: 'HRM, IC',
+    Level: 'A',
     Tool: 'RCA',
+    Committee: 'IC',
+    OtherAnalyze: '',
+    DivReview: '',
   },
   {
     Id: 6611008,
@@ -178,10 +194,12 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'ทบทวนซ้ำ',
-    Level: 'B',
-    Committee: 'IC, RM',
-    Tool: '',
+    Status: 'รอทบทวน',
+    Level: 'A',
+    Tool: 'RCA',
+    Committee: 'IC',
+    OtherAnalyze: '',
+    DivReview: '',
   },
   {
     Id: 6611009,
@@ -201,10 +219,16 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'ทบทวนซ้ำ',
-    Level: '10',
-    Committee: 'IC, PTC',
+    Status: 'รอทบทวน',
+    Level: 'A',
     Tool: 'RCA',
+    Committee: 'IC',
+    OtherAnalyze: '',
+    DivReview: '',
   },
 ];
-export default RiskEvaluateData;
+
+mock.onGet('/api/data/risk/RiskAnalyzeData').reply(() => {
+  return [200, RiskAnalyzeData];
+});
+export default RiskAnalyzeData;

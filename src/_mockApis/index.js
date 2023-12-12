@@ -1,4 +1,6 @@
 import mock from './mock';
-import './risk/RiskData';
-import './risk/AllRiskData';
+import './risk/DIVRiskData';
+import './risk/COMRiskData';
+import './risk/PendingReviewData';
+import './risk/RiskAnalyzeData';
 mock.onAny().passThrough();

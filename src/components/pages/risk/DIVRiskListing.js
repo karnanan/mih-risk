@@ -15,9 +15,9 @@ import {
   Pagination,
   TableContainer,
 } from '@mui/material';
-import { fetchRisks, SearchRisk } from './RiskSlice';
+import { fetchRisks, SearchRisk } from './DIVRiskSlice';
 
-const RiskListing = () => {
+const DIVRiskListing = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchRisks());
@@ -26,48 +26,44 @@ const RiskListing = () => {
   const getVisibleRisks = (risks, filter, riskSearch) => {
     switch (filter) {
       case 'total_risks':
-        return risks.filter(
-          (c) => !c.deleted && c.riskDetail.toLocaleLowerCase().includes(riskSearch),
-        );
+        return risks.filter((c) => !c.deleted && c.Detail.toLocaleLowerCase().includes(riskSearch));
 
       case 'รอทบทวน':
         return risks.filter(
           (c) =>
             !c.deleted &&
-            c.riskStatus === 'รอทบทวน' &&
-            c.riskDetail.toLocaleLowerCase().includes(riskSearch),
+            c.Status === 'รอทบทวน' &&
+            c.Detail.toLocaleLowerCase().includes(riskSearch),
         );
 
       case 'ทบทวนซ้ำ':
         return risks.filter(
           (c) =>
             !c.deleted &&
-            c.riskStatus === 'ทบทวนซ้ำ' &&
-            c.riskDetail.toLocaleLowerCase().includes(riskSearch),
+            c.Status === 'ทบทวนซ้ำ' &&
+            c.Detail.toLocaleLowerCase().includes(riskSearch),
         );
 
       case 'รอประเมิน':
         return risks.filter(
           (c) =>
             !c.deleted &&
-            c.riskStatus === 'รอประเมิน' &&
-            c.riskDetail.toLocaleLowerCase().includes(riskSearch),
+            c.Status === 'รอประเมิน' &&
+            c.Detail.toLocaleLowerCase().includes(riskSearch),
         );
 
       case 'ไม่ผ่าน':
         return risks.filter(
           (c) =>
             !c.deleted &&
-            c.riskStatus === 'ไม่ผ่าน' &&
-            c.riskDetail.toLocaleLowerCase().includes(riskSearch),
+            c.Status === 'ไม่ผ่าน' &&
+            c.Detail.toLocaleLowerCase().includes(riskSearch),
         );
 
       case 'ผ่าน':
         return risks.filter(
           (c) =>
-            !c.deleted &&
-            c.riskStatus === 'ผ่าน' &&
-            c.riskDetail.toLocaleLowerCase().includes(riskSearch),
+            !c.deleted && c.Status === 'ผ่าน' && c.Detail.toLocaleLowerCase().includes(riskSearch),
         );
 
       default:
@@ -103,11 +99,14 @@ const RiskListing = () => {
                 <Typography variant="h6">ประเภท</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant="h6">วันที่เกิดเหตุ</Typography>
+                <Typography variant="h6">เรื่อง</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant="h6">รายละเอียดความเสี่ยง</Typography>
+                <Typography variant="h6">วันที่เกิดเหตุ</Typography>
               </TableCell>
+              {/* <TableCell>
+                <Typography variant="h6">รายละเอียดความเสี่ยง</Typography>
+              </TableCell> */}
               <TableCell>
                 <Typography variant="h6">วันที่บันทึก</Typography>
               </TableCell>
@@ -122,30 +121,23 @@ const RiskListing = () => {
           <TableBody>
             {risks.map((risk) => (
               <TableRow key={risk.Id} hover>
-                <TableCell>
-                  <Typography>{risk.Id}</Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography>{risk.riskType}</Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography>{risk.riskDate}</Typography>
-                </TableCell>
-                <TableCell sx={{ maxWidth: '250px' }}>
+                <TableCell>{risk.Id}</TableCell>
+                <TableCell>{risk.Category}</TableCell>
+
+                <TableCell>{risk.Subject}</TableCell>
+                <TableCell>{risk.riskDate}</TableCell>
+                {/* <TableCell sx={{ maxWidth: '200px' }}>
                   <Typography
                     // color="textSecondary"
-                    noWrap
-
-                    // variant="subtitle2"
+                    // noWrap
+                    variant="subtitle"
                     // fontWeight="400"
                   >
-                    {risk.riskDetail}
+                    {risk.Detail}
                   </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography>{risk.Date}</Typography>
-                </TableCell>
-                <TableCell>
+                </TableCell> */}
+                <TableCell>{risk.Date}</TableCell>
+                {/* <TableCell>
                   <Stack direction="row" gap="10px" alignItems="center">
                     <Avatar
                       src={risk.thumb}
@@ -157,23 +149,24 @@ const RiskListing = () => {
                     />
                     <Typography>{risk.user}</Typography>
                   </Stack>
-                </TableCell>
+                </TableCell> */}
+                <TableCell>{risk.user}</TableCell>
                 <TableCell>
                   <Chip
                     sx={{
                       backgroundColor:
-                        risk.riskStatus === 'รอทบทวน'
-                          ? (theme) => theme.palette.primary.light
-                          : risk.riskStatus === 'ทบทวนซ้ำ'
+                        risk.Status === 'รอทบทวน'
+                          ? (theme) => theme.palette.warning.light
+                          : risk.Status === 'ทบทวนซ้ำ'
                           ? (theme) => theme.palette.secondary.light
-                          : risk.riskStatus === 'รอประเมิน'
-                          ? (theme) => theme.palette.error.light
-                          : risk.riskStatus === 'ไม่ผ่าน'
+                          : risk.Status === 'รอประเมิน'
                           ? (theme) => theme.palette.success.light
-                          : risk.riskStatus === 'ผ่าน',
+                          : risk.Status === 'ไม่ผ่าน'
+                          ? (theme) => theme.palette.error.light
+                          : risk.Status === 'ผ่าน',
                     }}
-                    // size="small"
-                    label={risk.riskStatus}
+                    size="small"
+                    label={risk.Status}
                   />
                 </TableCell>
               </TableRow>
@@ -188,4 +181,4 @@ const RiskListing = () => {
   );
 };
 
-export default RiskListing;
+export default DIVRiskListing;

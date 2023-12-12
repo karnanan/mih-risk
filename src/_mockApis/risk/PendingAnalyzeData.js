@@ -1,4 +1,6 @@
-const RiskEvaluateData = [
+import mock from '../mock';
+
+const PendingAnalyzeData = [
   {
     Id: 6611001,
     Category: 'Non Clinic',
@@ -17,10 +19,7 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'ทบทวนซ้ำ',
-    Level: '9',
-    Committee: 'IC',
-    Tool: 'RCA',
+    Status: 'รอวิเคราะห์',
   },
   {
     Id: 6611002,
@@ -40,10 +39,7 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'รอประเมิน',
-    Level: 'A',
-    Committee: 'IC',
-    Tool: '',
+    Status: 'รอวิเคราะห์',
   },
   {
     Id: 6611003,
@@ -63,10 +59,7 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'รอประเมิน',
-    Level: 'A',
-    Committee: 'IC',
-    Tool: '',
+    Status: 'รอวิเคราะห์',
   },
   {
     Id: 6611004,
@@ -86,10 +79,7 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'รอประเมิน',
-    Level: '9',
-    Committee: 'IC',
-    Tool: 'RCA',
+    Status: 'รอวิเคราะห์',
   },
   {
     Id: 6611005,
@@ -109,10 +99,7 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'ทบทวนซ้ำ',
-    Level: 'H',
-    Committee: 'IC',
-    Tool: 'RCA',
+    Status: 'รอวิเคราะห์',
   },
   {
     Id: 6611006,
@@ -132,10 +119,7 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'ทบทวนซ้ำ',
-    Level: 'A',
-    Committee: 'ENV, IC',
-    Tool: '',
+    Status: 'รอวิเคราะห์',
   },
   {
     Id: 6611007,
@@ -155,10 +139,7 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'ทบทวนซ้ำ',
-    Level: '5',
-    Committee: 'HRM, IC',
-    Tool: 'RCA',
+    Status: 'รอวิเคราะห์',
   },
   {
     Id: 6611008,
@@ -178,10 +159,7 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'ทบทวนซ้ำ',
-    Level: 'B',
-    Committee: 'IC, RM',
-    Tool: '',
+    Status: 'รอวิเคราะห์',
   },
   {
     Id: 6611009,
@@ -201,10 +179,11 @@ const RiskEvaluateData = [
     Suggestion: 'ab illo inventore veritatis et quasi architecto beatae vitae dicta',
     Date: '02-12-2021',
     user: 'Karnanan Purimanuruk',
-    Status: 'ทบทวนซ้ำ',
-    Level: '10',
-    Committee: 'IC, PTC',
-    Tool: 'RCA',
+    Status: 'รอวิเคราะห์',
   },
 ];
-export default RiskEvaluateData;
+
+mock.onGet('/api/data/risk/PendingAnalyzeData').reply(() => {
+  return [200, PendingAnalyzeData];
+});
+export default PendingAnalyzeData;
